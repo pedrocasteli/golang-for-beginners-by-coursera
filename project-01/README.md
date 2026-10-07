@@ -5,3 +5,5 @@ The first command was `go mod init silverkarma/faremenu`. It creates a module fi
 The `faremenu.go` file was created normally by us.
 
 The nest thing we did was run the command `go run .`, and the strings were showed in the console.
+
+The `&` used to read the value typed by the user, is a reference to the memory address of tha variable
