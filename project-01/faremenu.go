@@ -23,13 +23,40 @@ func main() {
 		}
 	}
 
-	fmt.Print("Enter destination code: ")
-	fmt.Scanln(&destination)
+	var destinationCity City
+	var destinationError error
+	var validDestinationEnterned bool = false
 
-	fmt.Print("Enter cabin class code: ")
-	fmt.Scanln(&cabinClass)
+	for !validDestinationEnterned {
+		fmt.Print("Enter destination code: ")
+		fmt.Scanln(&destination)
 
-	fmt.Println(cities[0].cityName)
-	fmt.Println(cities[1].latitude)
-	fmt.Println()
+		destinationCity, destinationError = getCityFromCode(destination)
+
+		if destinationError == nil {
+			fmt.Println("You've entered " + destinationCity.cityName)
+			validDestinationEnterned = true
+		} else {
+			fmt.Println(destinationError)
+		}
+	}
+
+	validCabinClassEntered := false
+	var enteredCabinClass CabinClass
+	var enteredCabinClassErr error
+
+	for !validCabinClassEntered {
+
+		fmt.Print("Enter cabin class code: ")
+		fmt.Scanln(&cabinClass)
+
+		enteredCabinClass, enteredCabinClassErr = getCabinClassFromCode(cabinClass)
+
+		if enteredCabinClassErr == nil {
+			fmt.Println("You've entered " + enteredCabinClass.className + " class")
+			validCabinClassEntered = true
+		} else {
+			fmt.Println(enteredCabinClassErr)
+		}
+	}
 }

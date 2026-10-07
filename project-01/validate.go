@@ -17,3 +17,16 @@ func getCityFromCode(codeToLookUp string) (City, error) {
 
 	return City{"", "", -999, -999}, errors.New(message)
 }
+
+func getCabinClassFromCode(codeToLookUp string) (CabinClass, error) {
+
+	for _, item := range cabinClasses {
+		if item.code == codeToLookUp {
+			return item, nil
+		}
+	}
+
+	message := fmt.Sprintf("%s is not a valid cabin class code", codeToLookUp)
+
+	return CabinClass{"", "", -999}, errors.New(message)
+}
