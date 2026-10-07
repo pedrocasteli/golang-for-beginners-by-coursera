@@ -13,3 +13,6 @@ In **Go**, we don't have to put everything in one single file. That's why we cre
 We also created the custom type `CabinClass`, and an `array` of `CabinClass` called `cabinClasses`.
 
 In **Practice-Task-1**, we had to fix the code. In `greeter.go`, I changed the **package** to "main". The main function's name was changed to "main" with lowercase "m". And in the `fmt.Scanln` function I added "&" before the variable name.
+
+In the function `getCityFromCode`, if there is no error, the `error` will be `nil`.
+The `:=` characters means you are declaring the variable and assigning a value to it at the same time. That way we don't need the `var` keyword. We also create the `validOriginEnterned` variable, that starts as `false`. As long as it stays `false`, we continue inside the `FOR` loop. `originCity` and `originError` receive the returning values of the `getCityFromCode` function. If `originError` in `nil`, then we know that the function found a corresponding origin code, and `validOriginEnterned` becomes `true`.
