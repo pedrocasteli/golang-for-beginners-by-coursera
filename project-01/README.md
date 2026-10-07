@@ -11,3 +11,5 @@ The `&` used to read the value typed by the user, is a reference to the memory a
 In **Go**, we don't have to put everything in one single file. That's why we created the `data.go` file. We especify the same package as `faremenu.go` so they can see each other. We created a custom data type called `City`: A struct that holds some values about cities. Then we created a variable of the type `array` of `City` elements called `cities`. We can then access the `cities` variable in the `faremenu.go` file.
 
 We also created the custom type `CabinClass`, and an `array` of `CabinClass` called `cabinClasses`.
+
+In **Practice-Task-1**, we had to fix the code. In `greeter.go`, I changed the **package** to "main". The main function's name was changed to "main" with lowercase "m". And in the `fmt.Scanln` function I added "&" before the variable name.
