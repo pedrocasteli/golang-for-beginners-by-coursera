@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/shopspring/decimal"
+)
 
 func main() {
 	var origin, destination, cabinClass string
@@ -25,7 +29,7 @@ func main() {
 
 	var destinationCity City
 	var destinationError error
-	var validDestinationEnterned bool = false
+	validDestinationEnterned := false
 
 	for !validDestinationEnterned {
 		fmt.Print("Enter destination code: ")
@@ -59,4 +63,19 @@ func main() {
 			fmt.Println(enteredCabinClassErr)
 		}
 	}
+
+	distance := CalculateDistance(
+		float64(destinationCity.longitude)/10000,
+		float64(destinationCity.latitude)/10000,
+		float64(originCity.longitude)/10000,
+		float64(originCity.latitude)/10000)
+
+	fmt.Printf("\nDistance: %.1f km\n", distance)
+	rate := decimal.New(int64(enteredCabinClass.rate), -2)
+
+	fmt.Printf("$ per km = %s\n", rate.StringFixed(2))
+
+	fare := decimal.NewFromFloat(distance).Mul(rate)
+
+	fmt.Printf("Total fare: $%s\n", fare.StringFixed(2))
 }
