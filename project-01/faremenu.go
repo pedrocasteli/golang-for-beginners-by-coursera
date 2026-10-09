@@ -20,7 +20,7 @@ func main() {
 		originCity, originError = getCityFromCode(origin)
 
 		if originError == nil {
-			fmt.Println("You've entered " + originCity.cityName)
+			fmt.Println("You've entered: " + originCity.cityName)
 			validOriginEnterned = true
 		} else {
 			fmt.Println(originError)
@@ -38,7 +38,7 @@ func main() {
 		destinationCity, destinationError = getCityFromCode(destination)
 
 		if destinationError == nil {
-			fmt.Println("You've entered " + destinationCity.cityName)
+			fmt.Println("You've entered: " + destinationCity.cityName)
 			validDestinationEnterned = true
 		} else {
 			fmt.Println(destinationError)
@@ -51,13 +51,19 @@ func main() {
 
 	for !validCabinClassEntered {
 
-		fmt.Print("Enter cabin class code: ")
+		fmt.Println("Available classes: ")
+
+		for _, cabinInfo := range cabinClasses {
+			fmt.Printf("%s: %s\n", cabinInfo.className, cabinInfo.code)
+		}
+
+		fmt.Print("Enter a class code: ")
 		fmt.Scanln(&cabinClass)
 
 		enteredCabinClass, enteredCabinClassErr = getCabinClassFromCode(cabinClass)
 
 		if enteredCabinClassErr == nil {
-			fmt.Println("You've entered " + enteredCabinClass.className + " class")
+			fmt.Println("You've entered: " + enteredCabinClass.className + " class")
 			validCabinClassEntered = true
 		} else {
 			fmt.Println(enteredCabinClassErr)

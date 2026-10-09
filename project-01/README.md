@@ -42,3 +42,5 @@ To create an `.exe` file of the application (a production version), I ran:
 ```
 go build .
 ```
+
+I imported the `strings` package to use in the validations of city and cabin class. I used the `strings.toUpper()` function so that the user doesn't always have to type in uppercase to inform his choice.
